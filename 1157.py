@@ -1,19 +1,20 @@
-from asyncio.windows_events import NULL
-from statistics import pvariance
 import sys
 
-read = sys.stdin.readline().strip('\n').upper()
-readDict={}
-li=[]
-for i in set(read):
-    readDict[i]=read.count(i)
-reverseDict={v:k for k,v in readDict.items()}
-dict_max=readDict.get(max(readDict))
-for i in readDict:
-    
-    li.append(readDict.get(i))
+read = list(sys.stdin.readline().strip('\n').upper())
+read_set=set(read)
+value_max=1
+result=set()
 
-if li.count(dict_max) >=2:
+for i in read_set:
+    if read.count(i) >=value_max:
+        if read.count(i) >value_max:
+            value_max=read.count(i)
+            result.clear()
+            result.add(i)
+        else:
+            result.add(i)
+
+if len(result) >= 2:
     print("?")
 else:
-    print(reverseDict.get(dict_max))
+    print(result.pop())
