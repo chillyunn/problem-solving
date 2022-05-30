@@ -1,18 +1,11 @@
 import sys
 
-H,M = map(int,sys.stdin.readline().split())
+year = int(sys.stdin.readline())
 
-if M<45:
-    if H==0:
-        H=23
-        M=60-45+M
+if year %4 == 0:
+    if(year%100 !=0 or year%400 ==0):
+        print(1)
     else:
-        H-=1
-        M=60-45+M
+        print(0)
 else:
-    M=M-45
-print(H,M)
-
-#------------------------
-#x=a*60+b-45
-#print(x//60%24,x%60)
+    print(0)
